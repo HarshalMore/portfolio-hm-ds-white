@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | John Muir</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap">
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .project-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .project-image {
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+        .modal:not(.active) {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .modal:not(.active) .modal-content {
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold gradient-text">JM</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-800 hover:text-primary">Home</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-primary">About</a>
+                    <a href="resume.html" class="nav-link text-gray-800 hover:text-primary">Resume</a>
+                    <a href="projects.html" class="nav-link text-primary">Projects</a>
+                    <a href="contact.html" class="nav-link text-gray-800 hover:text-primary">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-800 hover:text-primary">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="index.html" class="block py-2 text-gray-800 hover:text-primary">Home</a>
+            <a href="about.html" class="block py-2 text-gray-800 hover:text-primary">About</a>
+            <a href="resume.html" class="block py-2 text-gray-800 hover:text-primary">Resume</a>
+            <a href="projects.html" class="block py-2 text-primary">Projects</a>
+            <a href="contact.html" class="block py-2 text-gray-800 hover:text-primary">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                My <span class="gradient-text">Projects</span>
+            </h1>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                A showcase of my professional work and contributions
+            </p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100" data-aos="fade-up" onclick="openModal('modal1')">
+                <div class="h-48 overflow-hidden">
+                    <img src="http://static.photos/technology/640x360/1" alt="Okta IAM Implementation" class="w-full h-full object-cover project-image">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">Okta IAM Implementation</h3>
+                        <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">Cisco</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Designed and maintained Okta IAM systems for 1000+ users with automated lifecycle management.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Okta</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">IAM</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100" data-aos="fade-up" data-aos-delay="100" onclick="openModal('modal2')">
+                <div class="h-48 overflow-hidden">
+                    <img src="http://static.photos/technology/640x360/2" alt="SSO Solution Deployment" class="w-full h-full object-cover project-image">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">SSO Solution Deployment</h3>
+                        <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">Cisco</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Implemented Single sign-on solutions across 70+ enterprise applications, improving authentication efficiency.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">SSO</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">SAML</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">OAuth</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100" data-aos="fade-up" data-aos-delay="200" onclick="openModal('modal3')">
+                <div class="h-48 overflow-hidden">
+                    <img src="http://static.photos/technology/640x360/3" alt="MFA Policy Optimization" class="w-full h-full object-cover project-image">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">MFA Policy Optimization</h3>
+                        <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">Cisco</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Optimized multi-factor authentication policies, cutting unauthorized access attempts by 30%.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">MFA</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Security</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Duo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100" data-aos="fade-up" onclick="openModal('modal4')">
+                <div class="h-48 overflow-hidden">
+                    <img src="http://static.photos/technology/640x360/4" alt="FID Migration Project" class="w-full h-full object-cover project-image">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">FID Migration Project</h3>
+                        <span class="bg-green-100 text-secondary text-xs px-2 py-1 rounded-full">Radiant Logic</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Led seamless Federated Identity and Directory Services migrations with minimal downtime.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">FID</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Migration</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">LDAP</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100" data-aos="fade-up" data-aos-delay="100" onclick="openModal('modal5')">
+                <div class="h-48 overflow-hidden">
+                    <img src="http://static.photos/technology/640x360/5" alt="ServiceNow Automation" class="w-full h-full object-cover project-image">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">ServiceNow Automation</h3>
+                        <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full">LTI</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Implemented ServiceNow automation to reduce manual tasks and improve incident resolution time.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">ServiceNow</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Automation</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Workflow</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100" data-aos="fade-up" data-aos-delay="200" onclick="openModal('modal6')">
+                <div class="h-48 overflow-hidden">
+                    <img src="http://static.photos/technology/640x360/6" alt="Slack Bot Development" class="w-full h-full object-cover project-image">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">Slack Bot Development</h3>
+                        <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">Cisco</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Built a Slack bot using chat.postMessage API with bot token authentication for sandbox environments.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Slack API</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Bot</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Automation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modals -->
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="modal-content bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold">Okta IAM Implementation</h3>
+                        <p class="text-secondary">Cisco Systems, Inc. | July 2022 – 2024</p>
+                    </div>
+                    <button onclick="closeModal('modal1')" class="text-gray-500 hover:text-gray-700">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <img src="http://static.photos/technology/640x360/1" alt="Okta IAM Implementation" class="w-full rounded-lg shadow-md">
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-4">Project Overview</h4>
+                        <p class="text-gray-600 mb-4">
+                            Designed and implemented a comprehensive Okta Identity and Access Management system for Cisco's global workforce, serving over 1000 users across multiple regions and business units.
+                        </p>
+                        <div class="mb-4">
+                            <h5 class="font-semibold mb-2">Technologies Used:</h5>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Okta</span>
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Workflows</span>
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">SCIM</span>
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">API Integrations</span>
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Orchestration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h4 class="font-bold text-lg mb-4">Key Achievements</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Automated user onboarding, offboarding, provisioning and deprovisioning processes, reducing manual effort by 60% and improving accuracy</li>
+                        <li>Integrated Okta with 70+ enterprise applications for centralized authentication and authorization</li>
+                        <li>Developed custom workflows to handle complex identity lifecycle scenarios across hybrid environments</li>
+                        <li>Implemented robust monitoring and alerting for IAM events to enhance security posture</li>
+                        <li>Created comprehensive documentation and trained IT staff on IAM best practices</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Impact</h4>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-primary mb-2">60%</div>
+                            <p class="text-gray-600">Reduction in manual effort</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-primary mb-2">50%</div>
+                            <p class="text-gray-600">Faster access provisioning</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-primary mb-2">1000+</div>
+                            <p class="text-gray-600">Users managed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="modal-content bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold">SSO Solution Deployment</h3>
+                        <p class="text-secondary">Cisco Systems, Inc. | July 2022 – 2024</p>
+                    </div>
+                    <button onclick="closeModal('modal2')" class="text-gray-500 hover:text-gray-700">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <img src="http://static.photos/technology/640x360/2" alt="SSO Solution Deployment" class="w-full rounded-lg shadow-md">
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-4">Project Overview</h4>
+                        <p class="text-gray-600 mb-4">
+                            Designed and deployed a comprehensive Single Sign-On solution across Cisco's enterprise application ecosystem, enabling seamless and secure access for employees and partners.
+                        </p>
+                        <div class="mb-4">
+                            <h5 class="font-semibold mb-2">Technologies Used:</h5>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">SAML 2.0</span>
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">OAuth 2.0</span>
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">OpenID Connect</span>
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Okta</span>
+                                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">API Gateway</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h4 class="font-bold text-lg mb-4">Key Achievements</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Implemented SSO for 70+ enterprise applications across various departments and business units</li>
+                        <li>Standardized authentication protocols across the organization, reducing complexity and improving security</li>
+                        <li>Developed custom integration patterns for legacy applications that didn't natively support modern protocols</li>
+                        <li>Created a self-service portal for application owners to manage their SSO configurations</li>
+                        <li>Reduced help desk tickets related to password resets by 45%</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Impact</h4>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-primary mb-2">70+</div>
+                            <p class="text-gray-600">Applications integrated</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-primary mb-2">45%</div>
+                            <p class="text-gray-600">Reduction in password tickets</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-primary mb-2">100%</div>
+                            <p class="text-gray-600">Compliance with security standards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other modals would follow the same pattern... -->
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">
+                    © 2024 John Muir. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com" class="text-gray-500 hover:text-primary">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                    <a href="mailto:abc@xyz.com" class="text-gray-500 hover:text-primary">
+                        <i data-feather="mail"></i>
+                    </a>
+                    <a href="tel:+13334445555" class="text-gray-500 hover:text-primary">
+                        <i data-feather="phone"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (
+</body>
+</html>
