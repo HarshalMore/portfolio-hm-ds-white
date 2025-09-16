@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | John Muir</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap">
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #E5E7EB;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #3B82F6;
+            color: white;
+        }
+        .tab-button:not(.active):hover {
+            background-color: #EFF6FF;
+        }
+        .experience-card {
+            transition: all 0.3s ease;
+        }
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold gradient-text">JM</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-800 hover:text-primary">Home</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-primary">About</a>
+                    <a href="resume.html" class="nav-link text-primary">Resume</a>
+                    <a href="projects.html" class="nav-link text-gray-800 hover:text-primary">Projects</a>
+                    <a href="contact.html" class="nav-link text-gray-800 hover:text-primary">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-800 hover:text-primary">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="index.html" class="block py-2 text-gray-800 hover:text-primary">Home</a>
+            <a href="about.html" class="block py-2 text-gray-800 hover:text-primary">About</a>
+            <a href="resume.html" class="block py-2 text-primary">Resume</a>
+            <a href="projects.html" class="block py-2 text-gray-800 hover:text-primary">Projects</a>
+            <a href="contact.html" class="block py-2 text-gray-800 hover:text-primary">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Resume Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                My <span class="gradient-text">Resume</span>
+            </h1>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                A detailed overview of my professional experience, skills, and achievements
+            </p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex flex-wrap justify-center mb-12 gap-2" data-aos="fade-up">
+            <button class="tab-button px-6 py-2 rounded-full border border-gray-200 font-medium mr-2 mb-2 active" data-tab="experience">
+                Experience
+            </button>
+            <button class="tab-button px-6 py-2 rounded-full border border-gray-200 font-medium mr-2 mb-2" data-tab="skills">
+                Skills
+            </button>
+            <button class="tab-button px-6 py-2 rounded-full border border-gray-200 font-medium mr-2 mb-2" data-tab="certifications">
+                Certifications
+            </button>
+        </div>
+
+        <!-- Experience Tab -->
+        <div id="experience-tab" class="tab-content">
+            <div class="grid gap-8">
+                <!-- Experience 1 -->
+                <div class="experience-card bg-gray-50 p-8 rounded-lg shadow-sm" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold">IT Engineer</h3>
+                        <div class="flex items-center mt-2 md:mt-0">
+                            <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-medium mr-3">Full-time</span>
+                            <span class="text-gray-600"><i data-feather="calendar" class="mr-1"></i> July 2022 – 2024</span>
+                        </div>
+                    </div>
+                    <h4 class="text-xl text-secondary font-medium mb-4">Cisco Systems, Inc.</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Designed and maintained Okta IAM systems, ensuring secure access for 1000+ users across global IT infrastructure.</li>
+                        <li>Automated user onboarding, offboarding, provisioning and deprovisioning using Okta Workflows, SCIM, API integrations and Okta Orchestration reducing manual effort by 60%.</li>
+                        <li>Implemented Single sign-on (SSO) solutions, enhancing authentication efficiency across 70+ enterprise applications.</li>
+                        <li>Optimized multi-factor authentication (MFA) policies, strengthening security posture and cutting unauthorized access attempts by 30%.</li>
+                        <li>Integrated Okta with SaaS applications and cloud platforms for centralized authentication, authorization and security management, reducing access provisioning time by 50% and improving user satisfaction.</li>
+                    </ul>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="experience-card bg-gray-50 p-8 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold">Systems Engineer</h3>
+                        <div class="flex items-center mt-2 md:mt-0">
+                            <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-medium mr-3">Full-time</span>
+                            <span class="text-gray-600"><i data-feather="calendar" class="mr-1"></i> Dec 2019 – July 2022</span>
+                        </div>
+                    </div>
+                    <h4 class="text-xl text-secondary font-medium mb-4">Radiant Logic</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Installed, configured and optimized LDAP based Virtual Directory Servers (VDS), improving identity management efficiency for enterprise clients.</li>
+                        <li>Led seamless Federated Identity and Directory Services (FID) migrations, ensuring minimal downtime and maximizing new feature adoption.</li>
+                        <li>Configured Identity Correlation and Synchronization (ICS) to define identity topologies and correlation rules, ensuring accurate identity unification and real-time synchronization across sources like Active Directory and LDAP.</li>
+                        <li>Developed complex identity mapping and transformation rules in RadiantOne to accommodate custom data models, enhancing interoperability with legacy systems.</li>
+                        <li>Provided 24x7 technical support, ensuring SLA compliance and reducing ticket resolution time by 35% through proactive troubleshooting and root cause analysis.</li>
+                    </ul>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="experience-card bg-gray-50 p-8 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold">Systems Engineer</h3>
+                        <div class="flex items-center mt-2 md:mt-0">
+                            <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-medium mr-3">Full-time</span>
+                            <span class="text-gray-600"><i data-feather="calendar" class="mr-1"></i> Dec 2014 – July 2017</span>
+                        </div>
+                    </div>
+                    <h4 class="text-xl text-secondary font-medium mb-4">Larsen and Toubro Infotech (LTI)</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Configured and customized ServiceNow modules such as Incident, Change Management, and Service Requests, improving workflow efficiency for enterprise clients.</li>
+                        <li>Supported team in the implementation of ServiceNow solutions for clients, including configuration, customization, workflows, script includes and testing activities.</li>
+                        <li>Managed and resolved high-volume ServiceNow tickets (Incident, Request, Problem, and Service Requests), ensuring timely resolution and SLA compliance.</li>
+                        <li>Implemented ServiceNow automation to reduce manual tasks, improve incident resolution time, and address recurring issues, cutting ticket volume by 15%.</li>
+                        <li>Optimized ServiceNow workflows to improve efficiency and reduce service desk response times by automating repetitive tasks and approvals.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Tab -->
+        <div id="skills-tab" class="tab-content hidden">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Technical Skills -->
+                <div data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i data-feather="code" class="mr-3 text-primary"></i> Technical Skills
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Okta IAM</span>
+                                <span class="text-gray-600">Expert</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Cloud Security</span>
+                                <span class="text-gray-600">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">SSO/MFA</span>
+                                <span class="text-gray-600">Expert</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Python</span>
+                                <span class="text-gray-600">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">ServiceNow</span>
+                                <span class="text-gray-600">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Platforms -->
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i data-feather="tool" class="mr-3 text-primary"></i> Tools & Platforms
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                            <i data-feather="cloud" class="text-primary mr-3"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                            <i data-feather="shield" class="text-primary mr-3"></i>
+                            <span>Okta</span>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                            <i data-feather="database" class="text-primary mr-3"></i>
+                            <span>SQL Server</span>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                            <i data-feather="terminal" class="text-primary mr-3"></i>
+                            <span>PowerShell</span>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                            <i data-feather="server" class="text-primary mr-3"></i>
+                            <span>VMware</span>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                            <i data-feather="git-merge" class="text-primary mr-3"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                            <i data-feather="monitor" class="text-primary mr-3"></i>
+                            <span>Splunk</span>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                            <i data-feather="box" class="text-primary mr-3"></i>
+                            <span>Terraform</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications Tab -->
+        <div id="certifications-tab" class="tab-content hidden">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Certifications -->
+                <div data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i data-feather="award" class="mr-3 text-primary"></i> Certifications
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-lg mb-2">Cloud Computing Certification</h4>
+                            <p class="text-secondary mb-2">Open Cloud Institute (OCI) | UTSA</p>
+                            <p class="text-gray-600">Comprehensive training in cloud architecture, deployment models, and security best practices.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards -->
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i data-feather="star" class="mr-3 text-primary"></i> Awards
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-lg mb-2">BIG DATA 2017 Publication Award</h4>
+                            <p class="text-secondary mb-2">Large Scale Data Management, UTSA</p>
+                            <p class="text-gray-600">Recognized for outstanding research contributions in data management.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-lg mb-2">Best Presentation Award</h4>
+                            <p class="text-secondary mb-2">Large Scale Data Management, UTSA</p>
+                            <p class="text-gray-600">Awarded for exceptional presentation skills and technical content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Button -->
+        <div class="text-center mt-16" data-aos="fade-up">
+            <a href="#" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl">
+                <i data-feather="download" class="mr-2"></i> Download Full Resume
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">
+                    © 2024 John Muir. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com" class="text-gray-500 hover:text-primary">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                    <a href="mailto:abc@xyz.com" class="text-gray-500 hover:text-primary">
+                        <i data-feather="mail"></i>
+                    </a>
+                    <a href="tel:+13334445555" class="text-gray-500 hover:text-primary">
+                        <i data-feather="phone"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => content.classList.add('hidden'));
+                
+                // Show the selected tab content
+                const tabId = button.getAttribute('data-tab') + '-tab';
+                document.getElementById(tabId).classList.remove('hidden');
+            });
+        });
+
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        feather.replace();
+    </script>
+</body>
+</html>
